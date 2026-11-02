@@ -15,7 +15,7 @@
 // ─── Ссылка для кнопки «Поддержать разработку» ───────────────────────────
 // Впишите сюда адрес своей страницы поддержки (Boosty, Ko-fi, Buy Me a Coffee
 // и т. п.). Пока строка пустая, кнопка не показывается.
-const DONATE_URL = "";
+const DONATE_URL = "https://boosty.to/pagesaver/donate";
 // ─────────────────────────────────────────────────────────────────────────
 
 const api = typeof browser !== "undefined" ? browser : chrome;
