@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Полное копирование страницы</title>
+<style>
+  :root{color-scheme:light dark}
+  *{box-sizing:border-box;margin:0}
+  body{width:310px;padding:14px;font:13.5px/1.45 system-ui,-apple-system,sans-serif;background:#f3f4f6;color:#1a202c}
+  @media(prefers-color-scheme:dark){
+    body{background:#1e2330;color:#e2e4e9}
+    .card{background:#282e3e}
+    button{background:#3b82f6}
+    button.g{background:#4b5563}
+    .hint{color:#8b95a5}
+    #donate{background:transparent;color:#8b95a5;border-color:#3d4557}
+  }
+  h1{font-size:15px;margin-bottom:12px}
+  .card{background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+  .card label{display:flex;align-items:center;gap:8px;cursor:pointer}
+  .card input[type=checkbox]{width:16px;height:16px;flex-shrink:0}
+  .hint{font-size:11px;color:#6b7280;margin:6px 0 5px}
+  .row{display:flex;gap:8px;margin-bottom:8px}
+  button{flex:1;border:0;border-radius:8px;padding:10px 6px;background:#3b82f6;color:#fff;font:inherit;font-size:13px;cursor:pointer;transition:filter .15s}
+  button:hover:not(:disabled){filter:brightness(1.1)}
+  button:disabled{opacity:.45;cursor:default}
+  button.g{background:#4b5563}
+  button.r{background:#dc2626}
+  #status{font-size:12px;text-align:center;min-height:20px;padding-top:2px;word-break:break-word}
+  #status.err{color:#ef4444}
+  #status.ok{color:#22c55e}
+  #donate{display:none;margin-top:10px;background:transparent;color:#6b7280;border:1px solid #d1d5db;font-size:12px;padding:8px 6px;width:100%}
+</style>
+</head>
+<body>
+<h1>📄 Полное копирование страницы</h1>
+
+<div class="card">
+  <label><input type="checkbox" id="chkScroll" checked>
+  <span>Прокрутить до конца (подгрузить весь текст)</span></label>
+</div>
+<div class="card">
+  <label><input type="checkbox" id="chkEmbed">
+  <span>Встроить картинки прямо в файл</span></label>
+</div>
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+    <span>Скорость прокрутки</span>
+    <span id="speedLabel" style="font-size:11px;color:#6b7280;min-width:80px;text-align:right">Обычный</span>
+  </div>
+  <input type="range" id="speedSlider" min="0" max="2" value="1" style="width:100%;accent-color:#3b82f6">
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:#9ca3af;margin-top:2px">
+    <span>Тщательно</span><span>Обычный</span><span>Быстро</span>
+  </div>
+</div>
+
+<div class="hint">Скопировать в буфер:</div>
+<div class="row">
+  <button data-action="copyText">Только текст</button>
+  <button data-action="copyRich" class="g">С форматированием</button>
+</div>
+
+<div class="hint">Сохранить файл:</div>
+<div class="row">
+  <button data-action="saveDoc">Word (.doc)</button>
+  <button data-action="saveMd" class="g">Markdown (.md)</button>
+</div>
+<div class="row">
+  <button data-action="saveTxt" class="g">.txt</button>
+  <button data-action="saveHtml" class="g">.html</button>
+</div>
+<div class="row" id="rowPdf">
+  <button data-action="savePdfDirect" class="r" id="btnPdfDirect">PDF сразу в файл</button>
+  <button data-action="savePdfPrint" class="g">PDF через печать</button>
+</div>
+<div class="row">
+  <button data-action="inspectHtml" class="g" style="font-size:11px">🔬 Диагностика структуры (для отладки .md)</button>
+</div>
+
+<div id="status"></div>
+
+<button id="donate">☕ Поддержать разработку</button>
+
+<script src="popup.js"></script>
+</body>
+</html>

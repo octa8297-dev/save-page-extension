@@ -1,0 +1,21 @@
+# Собранные пакеты расширения
+dist/
+*.xpi
+*.zip
+*.crx
+*.pem
+
+# Служебные файлы ОС
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (если когда-нибудь появятся инструменты сборки)
+node_modules/
+npm-debug.log*
